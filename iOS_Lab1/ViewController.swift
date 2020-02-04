@@ -7,14 +7,19 @@
 //
 
 import UIKit
+import os
 
 class ViewController: UIViewController {
-
+    @IBOutlet var questionLabel: UILabel!
+    @IBOutlet var answerLabel: UILabel!
+    @IBAction var questionButton: UIButton!
+    @IBAction var answerButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        os_log("I just loaded")
+        questionLabel.text = ""
     }
-
 
 }
 

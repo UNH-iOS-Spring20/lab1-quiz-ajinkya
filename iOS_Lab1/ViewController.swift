@@ -12,13 +12,39 @@ import os
 class ViewController: UIViewController {
     @IBOutlet var questionLabel: UILabel!
     @IBOutlet var answerLabel: UILabel!
-    @IBAction var questionButton: UIButton!
-    @IBAction var answerButton: UIButton!
+    
+    @IBAction func showNextQuestion (_sender: UIButton) {
+        currentQuestionIndex += 1;
+        if (currentQuestionIndex == questions.count) {
+            currentQuestionIndex = 0;
+        }
+        questionLabel.text = questions[currentQuestionIndex]
+        answerLabel.text = "???"
+    }
+    
+    @IBAction func showAnswer (_sender : UIButton) {
+        answerLabel.text = answers[currentQuestionIndex]
+    }
+    
+    let questions: [String] = [
+        "What is 7+7",
+        "What is capital of India?",
+        "What is congac made of?"
+    ]
+     
+    let answers : [String] = [
+        "14",
+        "New Delhi",
+        "Grapes"
+    ]
+    
+    var currentQuestionIndex : Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         os_log("I just loaded")
-        questionLabel.text = ""
+        questionLabel.text = questions[currentQuestionIndex];
+       
     }
 
 }
